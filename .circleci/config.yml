@@ -35,8 +35,8 @@ jobs:
       COVERAGE: true
 
     steps:
-      - browser-tools/install-chrome
-      - browser-tools/install-chromedriver
+      # - browser-tools/install-chrome
+      # - browser-tools/install-chromedriver
       - checkout
       - ruby/install-deps
 
