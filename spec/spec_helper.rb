@@ -23,7 +23,7 @@ WebMock.disable_net_connect!(allow_localhost: true)
 
 # Check to see if we're inside a CI environment. If not, we don't want to override the default formatter.
 if ENV['CI']
-  # require 'coveralls'
+  require 'coveralls'
   SimpleCov.formatter = Coveralls::SimpleCov::Formatter
 end
 

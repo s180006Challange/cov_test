@@ -76,6 +76,7 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
   gem 'simplecov', require: false
+  gem 'coveralls_reborn', require: false
   gem 'webmock'
   gem 'mock_redis'
   gem 'database_cleaner'
