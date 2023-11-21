@@ -8,7 +8,7 @@ orbs:
   ruby: circleci/ruby@1.8.0
   node: circleci/node@5.0.2
   browser-tools: circleci/browser-tools@1.3.0
-  coveralls: coveralls/coveralls@2.2.1
+  # coveralls: coveralls/coveralls@2.2.1
 
 jobs:
   build:
@@ -49,7 +49,15 @@ jobs:
           name: Run Tests
           command: |
             bundle exec rspec --format progress
-      - coveralls/upload
+      - run:
+          name: Update Test Report
+          command: |
+            curl -sLO https://github.com/coverallsapp/coverage-reporter/releases/latest/download/coveralls-linux.tar.gz
+            curl -sLO https://github.com/coverallsapp/coverage-reporter/releases/latest/download/coveralls-checksums.txt
+            cat coveralls-checksums.txt | grep coveralls-linux.tar.gz | sha256sum --check
+            tar -xzf coveralls-linux.tar.gz
+            ./coveralls
+      # - coveralls/upload
       # collect reports
       - store_test_results:
           path: test_results
