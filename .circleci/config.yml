@@ -13,7 +13,7 @@ jobs:
   build:
     docker:
       # Specify the Ruby version you desire here
-      - image: image: cimg/ruby:3.2.2
+      - image: cimg/ruby:3.2.2
 
       # Specify service dependencies here if necessary
       # CircleCI maintains a library of pre-built images
