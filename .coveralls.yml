@@ -1,0 +1,16 @@
+# .coveralls.yml
+
+# Repository token
+repo_token: lwzgA9XTuW1dRDHj3Q8Al3buUYQRIXi7E
+
+# Repository name
+repo_name: s180006Challange/cov_test
+
+# The name of your build system
+service_name: cov_test
+
+# Coveralls endpoint
+endpoint: https://coveralls.io
+
+# Carryforward flags (or all to carry-forward all previous jobs)
+carryforward: all
