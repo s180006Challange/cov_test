@@ -1,15 +1,26 @@
-version: '2.1'
+version: 2.1
+
 orbs:
-  coveralls: coveralls/coveralls@1.0.6
-  jobs:
-    build:
-      docker:
-        - image: circleci/node:10.0.0
+  coveralls: coveralls/coveralls@2.0.0
+  node: circleci/node@1.1.6
+
+jobs:
+  test:
+    executor:
+      name: node/default
+
+    steps:
+      - checkout
+
+      - node/with-cache:
           steps:
-            - checkout
-        - run:
-            command: npm install && make test-coverage
-            name: Install and Make
-        - coveralls/upload
-workflows: null
+            - run: npm install
+            - run: make test-coverage
+
+      - coveralls/upload
+
+workflows:
+  test:
+    jobs:
+      - test
 
