@@ -45,19 +45,6 @@ jobs:
           command: dockerize -wait tcp://localhost:5432 -timeout 1m
 
       - run:
-          name: Install Code Climate Test Reporter
-          command: |
-            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-            chmod +x ./cc-test-reporter
-
-      - run:
-          name: Test Setup
-          command: |
-            cp config/application.example.yml config/application.yml
-            psql -U circleci -q -d project_name_test -f db/structure.sql -h localhost -p 5432
-            bundle exec rake assets:precompile
-
-      - run:
           name: Run Tests
           command: |
             mkdir /tmp/test-results
